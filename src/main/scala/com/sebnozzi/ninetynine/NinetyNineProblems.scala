@@ -53,4 +53,15 @@ object NinetyNineProblems {
   // P06 - find out whether a list is palyndrome
   def isPalyndrome[T](list: List[T]) = reverse(list) == list
 
+  // P07 - flatten a nested list structure
+  def flatten(list: List[_]): List[_] = {
+    def helper(remainder: Any, result: List[_]): List[_] =
+      remainder match {
+        case Nil => result
+        case (head:List[_]) :: tail => helper(tail, result ++ flatten(head))
+        case head :: tail => helper(tail, result :+ head)
+      }
+    helper(list, Nil)
+  }
+
 }

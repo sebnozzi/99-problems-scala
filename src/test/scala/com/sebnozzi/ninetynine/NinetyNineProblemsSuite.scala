@@ -24,7 +24,7 @@ class NinetyNineProblemsSuite extends FunSuite with Matchers {
   }
 
   test("P04 - find the number of elements of a list") {
-    import NinetyNineProblems.{ length => myLength }  // conflicts with Matchers :-(
+    import NinetyNineProblems.{ length => myLength } // conflicts with Matchers :-(
     myLength(List(1, 1, 2, 3, 5, 7)) should be(6)
     lengthFolding(List(1, 1, 2, 3, 5, 7)) should be(6)
   }
@@ -45,11 +45,18 @@ class NinetyNineProblemsSuite extends FunSuite with Matchers {
     reverse(List(1, 2, 3, 4)) should be(List(4, 3, 2, 1))
     reverseFolding(List(1, 2, 3, 4)) should be(List(4, 3, 2, 1))
   }
-  
+
   test("P06 - find out whether a list is palyndrome") {
-    isPalyndrome(List(1,2,3)) should be (false)
-    isPalyndrome(List(1,2,2,1)) should be (true)
-    isPalyndrome(List(5)) should be (true)
+    isPalyndrome(List(1, 2, 3)) should be(false)
+    isPalyndrome(List(1, 2, 2, 1)) should be(true)
+    isPalyndrome(List(5)) should be(true)
+  }
+
+  test("P07 - flatten a nested list structure") {
+    flatten(List(1)) should be(List(1))
+    flatten(List(1, 2)) should be(List(1, 2))
+    flatten(List(List(1))) should be(List(1))
+    flatten(List(List( 1, 1), 2, List( 3, List(5, 8)))) should be (List(1, 1, 2, 3, 5, 8))
   }
 
 }
